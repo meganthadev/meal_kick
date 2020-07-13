@@ -10,9 +10,18 @@ post '/login' => 'sessions#create'
 delete '/logout' => 'sessions#destroy'
 
 
-  resources :categories
+  resources :categories do 
+    resources :recipes, only: [:new, :create, :index]
+  end 
   resources :comments
-  resources :users
-  resources :recipes
+  resources :users do 
+    resources :recipes, only: [:new, :create, :index]
+  end 
+  resources :recipes do 
+    resources :comments, only: [:new, :create, :index]
+  end   
+  #resources :meal_weeks
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-end
+
+
+end 
