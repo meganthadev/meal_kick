@@ -7,4 +7,5 @@ class Recipe < ApplicationRecord
   validates :description, presence: true, length: { in: 15..100 }
   validates :instructions, presence: true, length: { maximum: 750 }
   default_scope { order(created_at: :desc)}
+  accepts_nested_attributes_for :comments
 end
