@@ -15,12 +15,16 @@ delete '/logout' => 'sessions#destroy'
   end 
   resources :comments
   resources :users do 
-    resources :recipes, only: [:new, :create, :index]
+    resources :recipes
   end 
+  resources :recipes
   resources :recipes do 
-    resources :comments, only: [:new, :create, :index]
+    resources :comments
   end   
-  #resources :meal_weeks
+
+  #resources :meal_weeks (stretch goal)
+
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 
