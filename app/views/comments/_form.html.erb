@@ -1,9 +1,25 @@
 <h1> New Comment: </h1>
 
-<%= form_for[ @recipe, @comment] do |f| %>
+<%= form_for(@comment)  do |f| %>
+
+ <% if @comment.errors.any? %>
+        <div id="error_explanation">
+            <h2>
+            <%= pluralize(@comment.errors.count, "error") %>
+            prohibited this comment from being saved:
+            </h2>
+ 
+        <ul>
+            <% @comment.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+            <% end %>
+        </ul>
+        </div>
+    <% end %>
+
 
    <p>
-    <%= f.label :content, "How was this recipe?" %><br/>
+    <%= f.label :content, "Tell us! How was this recipe?" %><br/>
     <%= f.hidden_field :recipe_id %>
     <%= f.text_area :content %>
   </p>
