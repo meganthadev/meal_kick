@@ -7,27 +7,7 @@
 <%= render partial: 'comments/form' %>
 <% end %>
 
-<h1> Your Houses List</h1>
 
-
-
-<% if @recipes = current_user.recipes %>
-
-
-    <% @recipes.each do |recipe| %>
-
- <li><%= link_to "Show #{recipe.title}", recipe_path(recipe) %></li>
- 
- <% end %>
- <p><%= link_to "New Recipe", new_recipe_path  %></p>
-
-
-<% else %>
-
-<p><%= link_to "New Recipe", new_recipe_path  %></p>
-
-<% end %>
- 
 
   <div class="comment_container comment_showcase-inner">
 
