@@ -1,47 +1,35 @@
 class CommentsController < ApplicationController
     before_action :get_comment, only: [:edit, :update, :destroy]
     before_action :set_comments, only: [:edit, :update, :destroy]
+    before_action :redirect_if_not_logged_in
 
-    def new 
-        @comment = Comment.new
-    end
+
+    def new
+        @comment = Comment.new 
+    end 
 
     def create
         @comment = Comment.new(comment_params)
-        @comment.user_id = current_user.id 
+        @comment.user_id = current_user.id
         @comment.recipe_id = params[:recipe_id]
-        @comment.save 
+        @comment.save
         redirect_to recipe_path(@comment.recipe)
+    end
+
+    def edit
     end 
 
-    def edit 
-    end 
-    
-    def update 
+    def update
         @comment.update(comment_params)
         redirect_to recipe_path(@recipe)
-    end  
-
-    def index 
-        @comments = Comment.all 
-    end     
-
-    def show 
-        @comment = Comment.find_by_id(params[:id])
-        redirect_to recipes_path if !@comment
     end 
-
+  
     def destroy
         @comment.destroy
         redirect_to recipe_path(@recipe)
-    end  
-    
-    
-    private 
+    end
 
-    def comment_params
-        params.require(:comment).permit(:content, :user_id, :recipe_id)
-    end 
+    private 
 
     def get_comment
         @comment = Comment.find_by(id: params[:id])
@@ -50,6 +38,10 @@ class CommentsController < ApplicationController
     def set_comments
         @recipe = @comment.recipe 
         @comments = @recipe.comments.find_by(id: params[:id])
-    end
+    end 
+        
+    def comment_params
+        params.require(:comment).permit(:content, :recipe_id)
+    end 
 
-end 
+end
