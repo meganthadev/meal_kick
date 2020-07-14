@@ -1,6 +1,5 @@
 class RecipesController < ApplicationController
     before_action :set_recipe, only: [:show, :edit, :update, :destroy]
-    before_action :authorized?, only: [:edit, :destroy]
     before_action :redirect_if_not_logged_in
 
     def new 
@@ -11,18 +10,15 @@ class RecipesController < ApplicationController
 
     def create 
         @recipe = current_user.recipes.build(recipe_params)
-        binding.pry
         if @recipe.save
-            binding.pry
-            redirect_to recipes_path(@recipe)
+            redirect_to recipe_path(@recipe)
         else 
-            render :new
+           render :new
         end 
      end 
 
      def show 
-        @recipe = Recipe.find_by_id(params[:id])
-        redirect_to recipes_path if !@recipe
+        @comment = Comment.new 
      end  
 
      def update
@@ -35,7 +31,7 @@ class RecipesController < ApplicationController
     
     def index 
         @recipes = Recipe.all
-      end   
+    end   
 
     def destroy
         @recipe.destroy
