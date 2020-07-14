@@ -1,0 +1,13 @@
+<h1> New Comment: </h1>
+
+<%= form_for[ @recipe, @comment] do |f| %>
+
+   <p>
+    <%= f.label :content, "How was this recipe?" %><br/>
+    <%= f.hidden_field :recipe_id %>
+    <%= f.text_area :content %>
+  </p>
+  <p>
+    <%= f.submit 'Submit' %>
+  </p>
+<% end %>
