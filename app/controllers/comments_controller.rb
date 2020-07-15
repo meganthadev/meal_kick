@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
         if params[:recipe_id] && @recipe = Recipe.find_by_id(params[:recipe_id])
             @comments = @recipe.comments
         else 
-            flash[:message] = "Oops! This recipe does not exist..."
+            @error = "Oops! This recipe does not exist..." if params[:recipe_id]
             @comments = Comment.all 
         end 
     end 
@@ -52,6 +52,10 @@ class CommentsController < ApplicationController
         
     def comment_params
         params.require(:comment).permit(:content, :recipe_id)
+    end 
+
+    def authorized_on_recipe?(recipe)
+        recipe.user == current_user
     end 
 
 end
