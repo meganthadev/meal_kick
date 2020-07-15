@@ -16,9 +16,12 @@ class UsersController < ApplicationController
 
     def show 
         redirect_to '/' if !@user
-        @user = User.find_by_id(params[:id])
-        
+        @user = User.find_by_id(params[:id]) 
     end 
+
+    def index 
+        @user = User.all
+    end  
 
     
     private 
