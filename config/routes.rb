@@ -4,6 +4,8 @@ root "sessions#home"
 get '/signup' => 'users#new'
 post '/signup' => 'users#create'
 
+get '/user/:id' => 'users#show'
+
 get '/login' => 'sessions#new'
 post '/login' => 'sessions#create'
 
@@ -15,11 +17,10 @@ delete '/logout' => 'sessions#destroy'
   end 
   resources :comments
   resources :users do 
-    resources :recipes
+    resources :recipes, only:  [:new, :create, :index]
   end 
-  resources :recipes
   resources :recipes do 
-    resources :comments
+    resources :comments, only:  [:new, :create, :index]
   end   
 
   #resources :meal_weeks (stretch goal)
