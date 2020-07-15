@@ -41,14 +41,15 @@ class RecipesController < ApplicationController
     private 
 
     def recipe_params
-        params.require(:recipe).permit(:title, :description, :instructions)
+        params.require(:recipe).permit(:title, :description, :instructions, 
+        :user_id, :category_id, category_attributes[:title], user_attributes[:username])
     end 
 
     def set_recipe
         @recipe = Recipe.find_by(id: params[:id])
     end 
     
-    def authorized?(recipe)
+    def authorized_on_recipe?(recipe)
         recipe.user == current_user
     end 
 
