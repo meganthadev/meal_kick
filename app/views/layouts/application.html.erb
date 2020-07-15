@@ -27,6 +27,7 @@
     <% if flash[:message] %>
      <br><br> <%= flash[:message]%>
     <% end %>
+    <%= @error %>
   </div>
     <%= yield %>
   </body>
