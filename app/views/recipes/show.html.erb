@@ -3,11 +3,10 @@
 <h2><%= @recipe.description %></h2>
 <h3><%= @recipe.instructions %></h3>
 
-<% if logged_in? %>
+
+<% if logged_in?%>
 <%= render partial: 'comments/form' %>
 <% end %>
-
-
 
   <div class="comment_container comment_showcase-inner">
 
