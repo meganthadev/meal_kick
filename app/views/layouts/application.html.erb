@@ -13,8 +13,8 @@
     <div> 
       <% if logged_in? %>
        <%= link_to "Add New Recipe", new_recipe_path %>   |   
+        <%= link_to "Recipe Categories", categories_path %>   |   
         <%= link_to "All Recipes", recipes_path %>   |   
-        <%= link_to "Add a Comment", new_comment_path %>   |   
          <%= link_to "Log Out", logout_path, method: "delete" %>  
       
       <% else %> 
@@ -23,6 +23,11 @@
       <% end %>
     </div>
 
+  <div>
+    <% if flash[:message] %>
+     <br><br> <%= flash[:message]%>
+    <% end %>
+  </div>
     <%= yield %>
   </body>
 </html>
