@@ -9,12 +9,13 @@ class CommentsController < ApplicationController
     end 
 
     def create
-        @comment = Comment.new(comment_params)
-        @comment.user_id = current_user.id
-        @comment.recipe_id = params[:recipe_id]
-        @comment.save
-        redirect_to recipe_path(@comment.recipe)
-    end
+        @comment = current_user.comments.build(comment_params)
+        if @comment.save
+            redirect_to comments_path
+        else
+        render :new
+        end
+    end 
 
     def edit
     end 
@@ -22,6 +23,15 @@ class CommentsController < ApplicationController
     def update
         @comment.update(comment_params)
         redirect_to recipe_path(@recipe)
+    end 
+
+    def index 
+        if params[:recipe_id] && @recipe = Recipe.find_by_id(params[:recipe_id])
+            @comments = @recipe.comments
+        else 
+            flash[:message] = "Oops! This recipe does not exist..."
+            @comments = Comment.all 
+        end 
     end 
   
     def destroy
