@@ -1,8 +1,11 @@
-<h1>Categories</h1>
+<h1>All Recipe Categories:</h1>
 <ul>
   <% Category.all.each do |category| %>
     <p><li><strong><%= link_to category.name, "categories/#{category.id}" %></strong></li></p>
   <% end %>
 </ul> 
+
+
+
 
 
