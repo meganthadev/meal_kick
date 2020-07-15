@@ -1,0 +1,10 @@
+<h1><%= @category.name %></h1>
+<br>
+<ul>
+<% @category.recipes.each do |recipe| %>
+  <p><li><strong><%= link_to recipe.title, recipe_path(recipe) %></strong></a> 
+      <p><%=recipe.description %></p>
+      <small>Created: <%=recipe.created_at %></small> <small>Last Updated: <%=recipe.updated_at %></small>
+  </li>
+  <%end%>
+</ul></p>

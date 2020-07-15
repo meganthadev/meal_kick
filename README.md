@@ -4,8 +4,9 @@ Welcome to MealKick! A meal planning app where users can add, share, and comment
 
 Installation Instructions:
 
-1) Run   bundle install --full-index
-2) run   git remote set-url origin git@github.com:meganthadev/meal_kick.git , then    eval `ssh-agent -s`  & 
+1) git clone git@github.com:meganthadev/meal_kick.git
+2) Run   bundle install --full-index
+2) Run   git remote set-url origin git@github.com:meganthadev/meal_kick.git , then    eval `ssh-agent -s`  & 
   ssh-add ~/.ssh/id_rsa   and enter passphrase just once before any git commits
 3) Run rails s to start server and view application in browser
 
