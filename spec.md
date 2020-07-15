@@ -11,7 +11,7 @@ Specs:
 
 - [X] Include at least one many-to-many relationship [*My example: A recipe has many comments thru users, a user has many comments thru recipes]
 
-- [ ] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user [recipes have many comments through users, users submit content as a comment attribute]
+- [X] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user [recipes have many comments through users, users submit content as a comment attribute]
 
 - [X] Include reasonable validations for simple model objects [*My example: valiations exist in each model for either user signup or for attribute content presence and 'length']
 
@@ -27,7 +27,7 @@ Specs:
 
 - [ ] Include nested resource show or index (URL e.g. users/2/recipes)
 
-- [ ] Include nested resource "new" form (URL e.g. recipes/1/ingredients/new)
+- [ ] Include nested resource "new" form (URL e.g. recipes/1/comments/new)
 
 - [ ] Include form display of validation errors (form URL e.g. /recipes/new)
 
