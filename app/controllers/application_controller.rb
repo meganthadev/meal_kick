@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
     def logged_in?
         !!current_user
     end
+
+    def show 
+        @user = User.find_by(id: params[:id])
+    end 
     
   private
 
@@ -16,6 +20,14 @@ class ApplicationController < ActionController::Base
     def redirect_if_not_logged_in
         redirect_to '/' if !logged_in?
     end  
+
+    def authorized_to_edit_recipe?(recipe)
+        recipe.user == current_user
+    end
+
+    def authorized_to_edit_cmnt?(comment)
+        comment.user == current_user
+    end
     
 
 end
