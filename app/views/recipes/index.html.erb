@@ -1,20 +1,20 @@
 <h1>All Recipes:</h1>
 
-
 <% if @recipes = current_user.recipes %>
 
+ <ul>
+  <% Recipe.all.each do |recipe| %>
+    <p><li><strong><%= link_to recipe.title, recipe_path(recipe.id) %></strong><br> 
+    <small>Category: <%= link_to recipe.category.name, "categories/#{recipe.category_id}" %></small> |
+    <small>Submitted by: <%= recipe.user.username %></small></p>
+      <p><%= recipe.description %></p>
+      <small>Created: <%=recipe.created_at %></small> | <small>Last Updated: <%=recipe.updated_at %></small>
+  </li>
+  <%end%>
+</ul> 
 
-    <% @recipes.each do |recipe| %>
 
- <li><%= link_to "Show #{recipe.title}", recipe_path(recipe) %></li>
- 
- <% end %>
- <p><%= link_to "New Recipe", new_recipe_path  %></p>
-
-
-<% else %>
-
-<p><%= link_to "New Recipe", new_recipe_path  %></p>
+<br><br><br><br><%= link_to "New Recipe", new_recipe_path  %>
 
 <% end %>
  
