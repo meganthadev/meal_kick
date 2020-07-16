@@ -3,9 +3,16 @@ class RecipesController < ApplicationController
     before_action :redirect_if_not_logged_in
 
     def new 
-        @recipe = Recipe.new
-        @comment = Comment.new
-        @comment.recipe_id = @recipe.id 
+        if params[:user_id] && @user = User.find_by_id(params[:user_id])
+            @recipe = @user.recipes.build
+          else
+            @recipe = Recipe.new
+          end
+          @recipe.build_category
+      #  @recipe = Recipe.new
+      #  @comment = Comment.new
+     #   @category = Category.new
+      #  @comment.recipe_id = @recipe.id 
     end 
 
     def create 
@@ -41,18 +48,12 @@ class RecipesController < ApplicationController
     private 
 
     def recipe_params
-        params.require(:recipe).permit(:title, :description, :instructions, 
-        :user_id, :category_id, category_attributes[:title], user_attributes[:username])
+        params.require(:recipe).permit(:title, :description, :instructions, :category_id, :user_id, category_attributes[:name])
     end 
 
     def set_recipe
         @recipe = Recipe.find_by(id: params[:id])
     end 
-    
-    def authorized_on_recipe?(recipe)
-        recipe.user == current_user
-    end 
-
 
 
 end
