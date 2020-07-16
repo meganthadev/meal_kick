@@ -11,17 +11,17 @@ Specs:
 
 - [X] Include at least one many-to-many relationship [*My example: A recipe has many comments thru users, a user has many comments thru recipes]
 
-- [X] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user [recipes have many comments through users, users submit content as a comment attribute]
+- [X] The "through" part of the has_many through includes at least one user submittable attribute, that is to say, some attribute other than its foreign keys that can be submitted by the app's user [*My example: recipes have many comments through users, users submit content as a comment attribute]
 
 - [X] Include reasonable validations for simple model objects [*My example: valiations exist in each model for either user signup or for attribute content presence and 'length']
 
-- [ ] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
+- [X] Include a class level ActiveRecord scope method [*My example: User.most_recipes URL: /users/most_recipes, returns top most active users (in regards to posting recipes)]
 
-- [ ] Include signup (how e.g. Devise)
+- [X] Include signup [*My example: manually coded user controller/routes]
 
-- [ ] Include login (how e.g. Devise)
+- [X] Include login [*My example: manually coded user controller/routes]
 
-- [ ] Include logout (how e.g. Devise)
+- [X] Include logout [*My example: manually coded user controller/routes]
 
 - [ ] Include third party signup/login (how e.g. Devise/OmniAuth)
 
