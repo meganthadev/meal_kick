@@ -4,24 +4,27 @@ root "sessions#home"
 get '/signup' => 'users#new'
 post '/signup' => 'users#create'
 
-get '/user/:id' => 'users#show'
+get '/profile' => 'users#profile'
 
 get '/login' => 'sessions#new'
 post '/login' => 'sessions#create'
 
 delete '/logout' => 'sessions#destroy'
 
+get "/auth/:provider/callback" => 'sessions#google'
 
+  resources :recipes do 
+    resources :comments
+  end   
   resources :categories do 
     resources :recipes, only: [:new, :create, :index]
   end 
   resources :comments
+  resources :users
   resources :users do 
-    resources :recipes, only:  [:new, :create, :index]
+    resources :recipes
   end 
-  resources :recipes do 
-    resources :comments, only:  [:new, :create, :index]
-  end   
+    
 
   #resources :meal_weeks (stretch goal)
 
