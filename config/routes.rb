@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 root "sessions#home"
+get '/users/most_recipes' => 'users#most_recipes'
 
 get '/signup' => 'users#new'
 post '/signup' => 'users#create'
@@ -20,7 +21,6 @@ get "/auth/:provider/callback" => 'sessions#google'
     resources :recipes, only: [:new, :create, :index]
   end 
   resources :comments
-  resources :users
   resources :users do 
     resources :recipes
   end 
