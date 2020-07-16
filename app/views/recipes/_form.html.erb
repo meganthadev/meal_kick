@@ -1,27 +1,26 @@
 
 <%= form_for @recipe do |f| %>
 
- <% if @recipe.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from saving:</h2>
-
-      <ul>
-        <% recipe.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+ <%= render partial: "layouts/errors", locals: {object: @recipe} %>
 
   <div class="field">
     <%= f.label :title %>
     <%= f.text_field :title %>
-  </div>
+  </div><br>
 
   <div class="field">
-    <%= f.label :category %><br>
-    <%= f.collection_select :category_id, Category.order(:name),:id,:name, include_blank: true %>
+    <%= f.label :category_id, "Select a Category Below:" %><br>
+    <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %>
   </div>  
+
+   <%= f.label "Or Create New Category:" %><br>
+
+   <%= f.fields_for :category, @recipe.category do |c| %>
+    <%= c.text_field :name, value: nil %>
+  <% end %>
+
+  <%= f.submit "Save Category" %><br><br>
+
 
   <div class="content">
   <%= f.label :description %><br>
