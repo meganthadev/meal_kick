@@ -10,8 +10,8 @@ class Recipe < ApplicationRecord
   validates :description, presence: true, length: { in: 15..100 }
   validates :instructions, presence: true, length: { maximum: 750 }
   scope :alpha, -> { order(:title) }
+  scope :most_comments, -> {left_joins(:comments).group('posts.id').order('count(comments.post_id) desc')}
   
-  accepts_nested_attributes_for :users
 
   def category_attributes(attr)
     self.category = Category.find_or_create_by(attr) if !attr[:name].blank?
