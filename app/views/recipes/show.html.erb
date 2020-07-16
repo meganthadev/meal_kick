@@ -1,18 +1,25 @@
-<h1><%= @recipe.title %></h1>
-<h3>By: <%= @recipe.user.username %></h3>
-<h2><%= @recipe.description %></h2>
-<h3><%= @recipe.instructions %></h3>
 
-
-<% if logged_in?%>
-<%= render partial: 'comments/form' %>
+<h3>By: <%=link_to @recipe.user.username, user_path(@recipe.user) %></h3>
+<h3>Category: <%= @recipe.category.try(:name)%></h3>
+<% if @recipe.user == current_user %>
+<h4><%= link_to "Edit Your Recipe", edit_recipe_path(@recipe)%></h4>
 <% end %>
+<h3><%= @recipe.description %></h3>
+<div><%= @recipe.instructions %></div><br>
+
+
+<p><%= link_to 'Add a new comment', new_recipe_comment_path(@recipe)%></p>
 
   <div class="comment_container comment_showcase-inner">
 
-    <% if @recipe.comments.present? %>
-    <h4>Comments:</h4><br>
-    <%= render partial: 'reviews/comment', collection: @review.comments %>
+    <% if !@recipe.comments.empty? %>
+    <p><%= link_to 'All Comments', recipe_comments_path(@recipe)%></p>
+    <h4>Most Recent Comments:</h4>
+    <% @recipe.comments.order(updated_at: :desc).limit(3).each do |com|%>
+    <li>
+      <strong><%= com.user.username%></strong> commented: "<%= link_to com.content, recipe_comment_path(@recipe,com)%>" at <%= com.updated_at.strftime("%I:%M %p on %m/%d/%Y") %>
+    </li>
+  <% end %>
     <% end %>
 </div>
 
