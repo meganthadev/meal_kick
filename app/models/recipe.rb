@@ -14,14 +14,10 @@ class Recipe < ApplicationRecord
   accepts_nested_attributes_for :users
 
   def category_attributes(attr)
-    category = Category.find_or_create_by(attr)
-    self.category = category if category.valid? || !self.category 
+    self.category = Category.find_or_create_by(attr) if !attr[:name].blank?
   end 
 
-  def user_attributes=(attr)
-    user = User.find_or_create_by(attr)
-    self.user = user if user.valid? || !self.user
-  end
+
 
 
 end
