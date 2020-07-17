@@ -24,9 +24,8 @@ class SessionsController < ApplicationController
     end 
 
     def google
-      #find_or_create a user using the attributes auth
       @user = User.find_or_create_by(email: auth["info"]["email"]) do |user|
-        user.email = auth["info"]["first_name"]
+        user.username = auth["info"]["first_name"]
         user.password = SecureRandom.hex(10)
       end
       if @user.save
@@ -37,12 +36,10 @@ class SessionsController < ApplicationController
       end
     end
   
-
     private
 
     def auth
       request.env['omniauth.auth']
     end
-  
 
 end  
