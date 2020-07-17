@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
     before_action :redirect_if_not_logged_in
 
     def new 
-     @category = Category.new
+        @category = Category.new
     end 
 
     def create 
@@ -27,7 +27,7 @@ class CategoriesController < ApplicationController
     private 
 
     def category_params
-        params.require(:category).permit(:name, :category_id )
+        params.require(:category).permit(:name, :id)
     end 
 
 end
