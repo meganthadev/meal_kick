@@ -13,14 +13,6 @@
     <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %>
   </div>  
 
-   <%= f.label "Or Create New Category:" %><br>
-
-   <%= f.fields_for :category, @recipe.category do |c| %>
-    <%= c.text_field :name, value: nil %>
-  <% end %>
-
-  <%= f.submit "Save Category" %><br><br>
-
 
   <div class="content">
   <%= f.label :description %><br>
@@ -35,4 +27,5 @@
   <div class="actions">
     <%= f.submit %>
   </div>
+  
 <% end %>
