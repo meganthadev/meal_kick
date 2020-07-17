@@ -3,26 +3,40 @@ class RecipesController < ApplicationController
     before_action :redirect_if_not_logged_in
 
     def new 
-        if params[:user_id] && @user = User.find_by_id(params[:user_id])
-            @recipe = @user.recipes.build
-          else
-            @recipe = Recipe.new
-          end
-          @recipe.build_category
+      if params[:user_id] && @user = User.find_by_id(params[:user_id])
+        @recipe = @user.recipes.build
+      else
+        @recipe = Recipe.new
+      end
+      @recipe.build_category
+    end
       #  @recipe = Recipe.new
-      #  @comment = Comment.new
-     #   @category = Category.new
+     #   @comment = Comment.new
+      #  @category = Category.new
       #  @comment.recipe_id = @recipe.id 
-    end 
+      # end 
+   
 
     def create 
-        @recipe = current_user.recipes.build(recipe_params)
-        if @recipe.save
-            redirect_to recipe_path(@recipe)
-        else 
-           render :new
-        end 
-     end 
+     # @user = User.find_by(params[:user_id])
+     @recipe = current_user.recipes.build(recipe_params)
+    if @recipe.save
+      flash[:message] = "Recipe saved!"
+      redirect_to recipes_path
+    else
+      render :new
+    end
+  end
+
+  #    @user.recipes.build(params[:user][:recipe])
+   #   @recipe = current_user.recipes.build(recipe_params)
+    #    if @recipe.save
+     #     flash[:notice] = "Recipe saved!"
+      #    redirect_to recipe_path(@recipe)
+       #   binding.pry
+        ##  render :new
+        #end 
+     #end 
 
      def show 
         @comment = Comment.new 
@@ -48,7 +62,7 @@ class RecipesController < ApplicationController
     private 
 
     def recipe_params
-        params.require(:recipe).permit(:title, :description, :instructions, :category_id, :user_id, category_attributes[:name])
+        params.require(:recipe).permit(:title, :description, :instructions, :user_id, :category_id, category_attributes: [:name])
     end 
 
     def set_recipe
