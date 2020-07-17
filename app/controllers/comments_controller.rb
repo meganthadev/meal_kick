@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
 
     def update
         @comment.update(comment_params)
-        redirect_to recipe_path(@recipe)
+        redirect_to recipe_path(@recipe.id)
     end 
 
     def index 
