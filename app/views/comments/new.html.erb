@@ -1,3 +1,8 @@
 <% if logged_in? %>
-<%= render partial: 'comments/form' %>
-<% end %>
+<h1>New Comment for <%= @comment.recipe.title %>!</h1>
+
+ <%= render 'form' %>
+
+ <% end %>
+
+
