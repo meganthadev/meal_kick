@@ -23,13 +23,13 @@ Specs:
 
 - [X] Include logout [*My example: manually coded user controller/routes]
 
-- [ ] Include third party signup/login (how e.g. Devise/OmniAuth)
+- [X] Include third party signup/login [*My example: OmniAuth]
 
-- [X]  Include nested resource show or index (URL e.g. users/2/recipes)
+- [X]  Include nested resource show or index [*My example: users/2/recipes]
 
-- [X] Include nested resource "new" form (URL e.g. recipes/1/comments/new)
+- [X] Include nested resource "new" form [*My example: recipes/1/comments/new]
 
-- [X] Include form display of validation errors (form URL e.g. /recipes/new)
+- [X] Include form display of validation errors [*My example: /recipes/new)
 
 Confirm:
 - [X] The application is pretty DRY
