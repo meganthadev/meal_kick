@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-root "sessions#home"
+root 'sessions#home'
 get '/users/most_recipes' => 'users#most_recipes'
+get "/auth/:provider/callback" => 'sessions#google'
+
 
 get '/signup' => 'users#new'
 post '/signup' => 'users#create'
@@ -12,7 +14,7 @@ post '/login' => 'sessions#create'
 
 delete '/logout' => 'sessions#destroy'
 
-get "/auth/:provider/callback" => 'sessions#google'
+
 
   resources :recipes do 
     resources :comments
