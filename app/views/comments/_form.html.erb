@@ -1,22 +1,8 @@
 <h1> Add a Comment: </h1>
 
-<%= form_for(@comment)  do |f| %>
+ <%= render partial: "layouts/errors", locals: {object: @comment} %>
 
- <% if @comment.errors.any? %>
-        <div id="error_explanation">
-            <h2>
-            <%= pluralize(@comment.errors.count, "error") %>
-            prohibited this comment from being saved:
-            </h2>
- 
-        <ul>
-            <% @comment.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-            <% end %>
-        </ul>
-        </div>
-    <% end %>
-
+<%= form_for(@comment) do |f| %>
 
    <p>
     <%= f.label :content, "Tell us! How was this recipe?" %><br/>
