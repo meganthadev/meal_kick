@@ -3,6 +3,7 @@
 <%= form_for(@category) do |f| %>
 <h2>Create a New Category:<br><br>
 <%= f.text_field :name %><br><br>
+<%= f.hidden_field :category_id, value: @category.id %>
 <%= f.submit 'Submit' %>
   <% end %>
   </h2>
