@@ -37,6 +37,7 @@ class UsersController < ApplicationController
         end
     end 
       
+    
 
       def most_recipes
         @users = User.most_recipes

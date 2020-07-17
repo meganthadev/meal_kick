@@ -25,10 +25,16 @@ class SessionsController < ApplicationController
 
     def google
       #find_or_create a user using the attributes auth
-      @user = User.from_omniauth(auth)
-    @user.save
-    session[:user_id] = @user.id
-    redirect_to home_path
+      @user = User.find_or_create_by(email: auth["info"]["email"]) do |user|
+        user.email = auth["info"]["first_name"]
+        user.password = SecureRandom.hex(10)
+      end
+      if @user.save
+        session[:user_id] = @user.id
+        redirect_to user_path(@user)
+      else
+        redirect_to '/'
+      end
     end
   
 
