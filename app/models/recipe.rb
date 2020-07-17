@@ -7,10 +7,11 @@ class Recipe < ApplicationRecord
   delegate :name, to: :category
   
   validates :title, presence: true, length: { in: 3..30 }
+  validates :category, presence: true
   validates :description, presence: true, length: { in: 15..100 }
   validates :instructions, presence: true, length: { maximum: 750 }
   scope :alpha, -> { order(:title) }
-  scope :most_comments, -> {left_joins(:comments).group('posts.id').order('count(comments.post_id) desc')}
+  scope :most_comments, -> {left_joins(:comments).group('recipes.id').order('count(comments.recipe_id) desc')}
   
 
   def category_attributes(attr)
