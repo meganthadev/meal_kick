@@ -1,26 +1,27 @@
+<h1><%= @recipe.title %></h1>
+<h4>Written By: <%= @recipe.user.username %></h4>
+<h4>Recipe Category: <%= @recipe.category.try(:name)%></h4>
 
-<h3>By: <%= @recipe.user.username %></h3>
-<h3>Category: <%= @recipe.category.try(:name)%></h3>
+<h3><strong>Description: </strong></h3><%= @recipe.description %><br><br>
+<div><strong>Recipe Ingredients & Instructions: </strong><br><br><%= @recipe.instructions %></div><br><br>
 
 <% if @recipe.user == current_user %>
 <h5><%= link_to "Edit Your Recipe", edit_recipe_path(@recipe)%></h5>
 
-<h3><%= @recipe.description %></h3>
-<div><%= @recipe.instructions %></div><br><br>
 
 <% else %> 
 
-<p><%= link_to 'Add a new comment', new_recipe_comment_path(@recipe)%></p>
+<p><%= link_to 'Add Comment', new_recipe_comment_path(@recipe)%></p>
 <% end %>
 
   <div class="comment_container comment_showcase-inner">
 
     <% if !@recipe.comments.empty? %>
-    <p><%= link_to 'All Comments', recipe_comments_path(@recipe)%></p>
+    <p><%= link_to 'View All Comments', recipe_comments_path(@recipe) %></p>
     <h4>Most Recent Comments:</h4>
-    <% @recipe.comments.order(updated_at: :desc).limit(3).each do |com|%>
+    <% @recipe.comments.order(updated_at: :desc).limit(3).each do |com| %>
     <li>
-      <strong><%= com.user.username%></strong> commented: "<%= link_to com.content, recipe_comment_path(@recipe,com)%>" at <%= com.updated_at.strftime("%I:%M %p on %m/%d/%Y") %>
+      <strong><%= com.user.username%></strong> commented: "<%= link_to com.content, recipe_comment_path(@recipe, com) %>" at <%= com.updated_at.strftime("%I:%M %p on %m/%d/%Y") %>
     </li>
   <% end %>
     <% end %>
