@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 root 'sessions#home'
-get '/users/most_recipes' => 'users#most_recipes'
-get "/auth/:provider/callback" => 'sessions#google'
+get '/auth/:provider/callback' => 'sessions#google'
 
+get '/users/most_recipes' => 'users#most_recipes'
 
 get '/signup' => 'users#new'
 post '/signup' => 'users#create'
