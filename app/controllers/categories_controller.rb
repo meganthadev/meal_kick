@@ -6,7 +6,7 @@ class CategoriesController < ApplicationController
     end 
 
     def create 
-        @category = current_user.recipes.build(category_params)
+        @category = Category.create(category_params)
         if @category.save
           redirect_to category_path(@category)
         else
@@ -20,13 +20,14 @@ class CategoriesController < ApplicationController
     end 
 
     def show 
-        @category = Category.find_by(params[:id])
+        @category = Category.find_by(id: params[:id])
+        @recipes = Recipe.where(category_id: params[:id])
     end   
     
     private 
 
     def category_params
-        params.require(:category).permit(:name, :category_id, )
+        params.require(:category).permit(:name, :category_id )
     end 
 
 end
