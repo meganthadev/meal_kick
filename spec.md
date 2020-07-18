@@ -1,5 +1,7 @@
  Specifications for the Rails Assessment
 
+
+ADD NEW RECIPE TO 
 Specs:
 - [x] Using Ruby on Rails for the project
 
