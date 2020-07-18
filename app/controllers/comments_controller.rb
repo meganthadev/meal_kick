@@ -16,6 +16,7 @@ class CommentsController < ApplicationController
     def create
         @comment = current_user.comments.build(comment_params)
         if @comment.save
+            flash[:message] = "Comment saved!"
             redirect_to comment_path(@comment)
         else
         render :new
@@ -30,6 +31,7 @@ class CommentsController < ApplicationController
 
     def update
         if @comment.update(comment_params)
+            flash[:message] = "Comment saved!"
             redirect_to comment_path(@comment)
         else
             render :edit
