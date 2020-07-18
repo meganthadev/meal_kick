@@ -9,12 +9,8 @@
     <%= f.text_field :title %><br>
    <br>
 
-  <% if !params[:category_id] %>
-
     <%= f.label :category_id, "Select a Category Below:" %><br>
     <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %><br>
- 
-  <% end %>
 
 
   <%= f.label :description %><br>
