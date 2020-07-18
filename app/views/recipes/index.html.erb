@@ -4,7 +4,7 @@
 <% if @recipes = current_user.recipes %>
 
  <ul>
-  <% Recipe.all.each do |recipe| %>
+  <% Recipe.order_recipes.each do |recipe| %>
     <p><li><strong><%= link_to recipe.title, recipe_path(recipe.id) %></strong><br> 
     <small>Category: <%= link_to recipe.category.name, "categories/#{recipe.category_id}" %></small> |
     <small>Written By: <%= recipe.user.username %></small></p>
