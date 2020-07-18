@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
-    before_action :set_comment, only: [:show, :edit, :update, :destroy]
+    before_action :set_comment, only: [:show, :edit, :update]
     before_action :redirect_if_not_logged_in
-    before_action :redirect_if_not_comment_author, only: [:edit, :update, :destroy]
+    before_action :redirect_if_not_comment_author, only: [:edit, :update]
 
 
     def new
@@ -44,11 +44,6 @@ class CommentsController < ApplicationController
             @comments = Comment.all 
         end 
     end 
-  
-    def destroy
-        @comment.destroy
-        redirect_to recipe_path(@recipe)
-    end
 
     private 
 
