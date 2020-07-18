@@ -1,6 +1,6 @@
 <h1>Log In</h1>
 
-
+<%= render partial: "layouts/errors", locals: {object: @user} %>
 <%= flash[:message] if flash[:message] %> <br>
 
 <%= form_for :user do |f| %>
