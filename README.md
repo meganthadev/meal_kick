@@ -10,7 +10,7 @@ Installation Instructions:
   ssh-add ~/.ssh/id_rsa   then enter ssh passphrase just once before any git commits
 3) Run rails s to start server and view application in browser
 
-
+update
 
 * Rails version - 'rails', '~> 6.0.3'
 
