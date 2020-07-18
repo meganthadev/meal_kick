@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
     before_action :redirect_if_not_logged_in
 
 
-    def new 
+    def new
       if params[:user_id] && @user = User.find_by_id(params[:user_id])
         @recipe = @user.recipes.build
       else
@@ -13,14 +13,15 @@ class RecipesController < ApplicationController
     end   
 
     def create 
-    @recipe = current_user.recipes.build(recipe_params)
-    if @recipe.save
-      flash[:notice] = "Recipe saved!"
-      redirect_to recipes_path
-    else
-      render :new
+      @recipe = current_user.recipes.build(recipe_params)
+      @category = @recipe.category_id
+      if @recipe.save
+        flash[:notice] = "Recipe saved!"
+        redirect_to recipe_path(@recipe)
+      else
+        render :new
+      end
     end
-  end
 
     def show 
      @comment = Comment.new 
@@ -35,7 +36,7 @@ class RecipesController < ApplicationController
       end
     
     def index 
-        @recipes = Recipe.all.order('title ASC')
+      @recipes = Recipe.all
     end   
 
     def destroy
@@ -46,7 +47,7 @@ class RecipesController < ApplicationController
     private 
 
     def recipe_params
-        params.require(:recipe).permit(:title, :description, :instructions, :category_id, category_attributes: [:name])
+        params.require(:recipe).permit(:title, :description, :instructions, :category_id, category_attributes: [:name, :id])
     end 
 
     def set_recipe
