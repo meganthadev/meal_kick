@@ -1,5 +1,29 @@
 <h1>Create New Recipe:</h1>
 
 
- <%= render 'form' %>
+<% if !params[:category_id] %>
 
+  <%= render 'form' %>
+
+ <% else %>
+    
+    <%= form_for @recipe do |f| %>
+
+    <%= render partial: "layouts/errors", locals: {object: @recipe} %>
+
+    <%= f.hidden_field :category_id %>
+
+    <%= f.label :title %>
+    <%= f.text_field :title %><br>
+    <br>
+
+    <%= f.label :description %><br>
+    <%= f.text_area :description %><br><br>
+
+
+    <%= f.label :instructions %><br>
+    <%= f.text_area :instructions, size: "50x18" %><br><br>
+  
+    <%= f.submit %>
+  <% end %>
+<% end %>
