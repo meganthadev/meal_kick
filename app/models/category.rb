@@ -4,7 +4,7 @@ class Category < ApplicationRecord
     validates :name, presence: true, length: { maximum: 20 }
     validates :name, uniqueness: true, on: :create
    
-    default_scope { order(name: :desc)}
+    scope :order_categories, -> {order(:name)}
 
     
 end
