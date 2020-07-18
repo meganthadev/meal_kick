@@ -17,14 +17,14 @@ delete '/logout' => 'sessions#destroy'
 
 
   resources :recipes do 
-    resources :comments, only: [:show, :new, :create, :edit, :update]
+    resources :comments, only: [:show, :new, :index, :create, :edit, :update]
   end   
   resources :categories do 
     resources :recipes, only: [:new, :create, :index, :show, :edit, :update]
   end 
-  resources :comments
+  resources :comments, only: [:new, :create, :index, :show, :edit, :update]
   resources :users do 
-    resources :recipes, only: [:show, :new, :create, :edit, :update, :destroy]
+    resources :recipes
   end 
     
 
