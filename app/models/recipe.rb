@@ -5,14 +5,13 @@ class Recipe < ApplicationRecord
   has_many :users, through: :comments
 
   delegate :name, to: :category
+  delegate :id, to: :category
   
   validates :title, presence: true, length: { in: 3..30 }
-  validates :category, presence: true
   validates :description, presence: true, length: { in: 15..100 }
   validates :instructions, presence: true, length: { maximum: 750 }
-  scope :alpha, -> { order(:title) }
-  scope :most_comments, -> {left_joins(:comments).group('recipes.id').order('count(comments.recipe_id) desc')}
-  
+  scope :order_recipes, -> {order(:title)}
+
 
   def category_attributes(attr)
     self.category = Category.find_or_create_by(attr) if !attr[:name].blank?
