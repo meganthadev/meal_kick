@@ -21,13 +21,13 @@ class CategoriesController < ApplicationController
 
     def show 
         @category = Category.find_by(id: params[:id])
-        @recipes = Recipe.where(category_id: params[:id])
+       # @recipes = Recipe.where(category_id: params[:id])
     end   
     
     private 
 
     def category_params
-        params.require(:category).permit(:name, :id)
+        params.require(:category).permit(:name, :recipe_id)
     end 
 
 end
