@@ -1,6 +1,7 @@
 class RecipesController < ApplicationController
     before_action :set_recipe, only: [:show, :edit, :update, :destroy]
     before_action :redirect_if_not_logged_in
+    before_action :get_category
 
 
     def new
@@ -16,7 +17,7 @@ class RecipesController < ApplicationController
       @recipe = current_user.recipes.build(recipe_params)
       @category = @recipe.category_id
       if @recipe.save
-        flash[:notice] = "Recipe saved!"
+        flash[:message] = "Recipe saved!"
         redirect_to recipe_path(@recipe)
       else
         render :new
@@ -24,11 +25,11 @@ class RecipesController < ApplicationController
     end
 
     def show 
-     @comment = Comment.new 
     end  
 
      def update
         if @recipe.update(recipe_params)
+          flash[:message] = "Recipe saved!"
           redirect_to recipe_path(@recipe)
         else  
           render 'edit'
@@ -41,6 +42,7 @@ class RecipesController < ApplicationController
 
     def destroy
         @recipe.destroy
+        flash[:message] = "Recipe deleted!"
         redirect_to recipes_path   
     end 
 
@@ -54,5 +56,7 @@ class RecipesController < ApplicationController
         @recipe = Recipe.find_by(id: params[:id])
     end 
 
-
+    def get_category
+      @category = Category.find_by_id(params[:category_id])
+    end
 end
