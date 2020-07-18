@@ -8,6 +8,7 @@ class CategoriesController < ApplicationController
     def create 
         @category = Category.create(category_params)
         if @category.save
+          flash[:message] = "Category saved!"
           redirect_to category_path(@category)
         else
           render :new
