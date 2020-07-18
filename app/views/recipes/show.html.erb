@@ -17,7 +17,7 @@
   <div class="comment_container comment_showcase-inner">
 
     <% if !@recipe.comments.empty? %>
-    <p><%= link_to 'View All Comments', recipe_comments_path(@recipe) %></p>
+    <p><%= link_to 'View All Comments', recipe_comments_path(@recipe, @comment) %></p>
     <h4>Most Recent Comments:</h4>
     <% @recipe.comments.order(updated_at: :desc).limit(3).each do |com| %>
     <li>
