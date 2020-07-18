@@ -15,7 +15,6 @@ class RecipesController < ApplicationController
 
     def create 
       @recipe = current_user.recipes.build(recipe_params)
-      @category = @recipe.category_id
       if @recipe.save
         flash[:message] = "Recipe saved!"
         redirect_to recipe_path(@recipe)
@@ -42,7 +41,7 @@ class RecipesController < ApplicationController
 
     def destroy
         @recipe.destroy
-        flash[:message] = "Recipe deleted!"
+         flash[:message] = "Recipe deleted!"
         redirect_to recipes_path   
     end 
 
