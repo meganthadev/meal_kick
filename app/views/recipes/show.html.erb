@@ -7,7 +7,7 @@
 
 <% if @recipe.user == current_user %>
 <h5><%= link_to "Edit Your Recipe", edit_recipe_path(@recipe)%></h5>
-
+<h5><%= link_to "Delete Your Recipe", recipe_path(@recipe), method: :delete%></h5>
 
 <% else %> 
 
