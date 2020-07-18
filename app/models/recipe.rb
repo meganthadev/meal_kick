@@ -5,8 +5,8 @@ class Recipe < ApplicationRecord
   has_many :users, through: :comments
 
   delegate :name, to: :category
-  delegate :id, to: :category
   
+ 
   validates :title, presence: true, length: { in: 3..30 }
   validates :description, presence: true, length: { in: 15..100 }
   validates :instructions, presence: true, length: { maximum: 750 }
