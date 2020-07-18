@@ -22,7 +22,6 @@ class CategoriesController < ApplicationController
 
     def show 
         @category = Category.find_by(id: params[:id])
-       # @recipes = Recipe.where(category_id: params[:id])
     end   
     
     private 
