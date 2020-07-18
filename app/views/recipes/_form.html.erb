@@ -3,29 +3,29 @@
 
  <%= render partial: "layouts/errors", locals: {object: @recipe} %>
 
-  <div class="field">
+<%= f.hidden_field :category_id %>
+
     <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div><br>
+    <%= f.text_field :title %><br>
+   <br>
 
-  <div class="field">
+  <% if !params[:category_id] %>
+
     <%= f.label :category_id, "Select a Category Below:" %><br>
-    <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %>
-  </div>  
+    <%= f.collection_select :category_id, Category.all, :id, :name, include_blank: true %><br>
+ 
+  <% end %>
 
 
-  <div class="content">
   <%= f.label :description %><br>
-  <%= f.text_area :description %>
-  </div>
+  <%= f.text_area :description %><br><br>
 
-  <div class="content">
+
   <%= f.label :instructions %><br>
-  <%= f.text_area :instructions, size: "50x18" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.text_area :instructions, size: "50x18" %><br><br>
   
-<% end %>
+    <%= f.submit %>
+
+
+
+  <% end %> 
