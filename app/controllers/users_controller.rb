@@ -30,7 +30,7 @@ class UsersController < ApplicationController
          @recipes = Recipe.where(user_id: current_user.id).order(title: :desc)
          @categories = Category.where(user_id: current_user.id).order(name: :desc)
          @user = User.find_by(id: current_user.id)
-         @comments = @user.recipe_comments.order(created_at: :desc)
+         @comments = @user.commented_recipes.order(created_at: :desc)
          render :show
         else
           redirect_to '/'
