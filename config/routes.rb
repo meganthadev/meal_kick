@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 root 'sessions#home'
 get '/auth/:provider/callback' => 'sessions#google'
+get '/auth/failure' => 'sessions#home'
 
 get '/users/most_recipes' => 'users#most_recipes'
 
