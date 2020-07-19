@@ -19,9 +19,9 @@ class UsersController < ApplicationController
     end 
 
     def show 
-        redirect_if_not_logged_in
+       # redirect_if_not_logged_in
         @user = User.find_by(id: params[:id])
-        @user = User.includes(recipes: :category).find_by_id(params[:id])
+        @user = User.includes(recipes: :category).find_by_id(id: params[:id])
         redirect_to '/' if !@user
     end 
 
