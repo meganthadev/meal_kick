@@ -1,6 +1,6 @@
- MealKick README
+ MealKick! README
 
-Welcome to MealKick! A meal planning app where users can add, share, and comment their own recipes in a simple-to-use interface which makes meal planning... a real kick!
+Welcome to MealKick! A meal planning app where users can add and share their own recipes for meal planning, as well as comment on other's recipes, in a simple-to-use interface which makes meal planning... a real kick!
 
 Installation Instructions:
 
@@ -14,11 +14,10 @@ Installation Instructions:
 
 * Rails version - 'rails', '~> 6.0.3'
 
-* System dependencies
+* gem 'bcrypt', '~> 3.1.7'
+  gem 'omniauth'
+  gem 'dotenv-rails'
+  gem 'omniauth-google-oauth2
 
-* Configuration
 
-* Database initialization
-
-* How to run the test suite
 
