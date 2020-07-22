@@ -9,6 +9,8 @@ class User < ApplicationRecord
     validates :username, presence: true, length: { in: 3..18 }
     validates :email, presence: true 
     validates :email, uniqueness: true
+    scope :order_recipes, -> {order(:title)}
+
    
     def self.most_recipes
         joins(:recipes).group(:user_id).order("count(user_id) DESC").limit(3)
