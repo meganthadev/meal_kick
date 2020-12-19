@@ -7,7 +7,7 @@
 - Users of this app can create, view, or edit meals.
 
 
-Installation Instructions:
+### Installation Instructions:
 
 1) git clone git@github.com:meganthadev/meal_kick.git
 2) Run   bundle install --full-index (installs all gems/dependencies)
