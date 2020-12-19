@@ -16,6 +16,7 @@
 3) Run rails s to start server and view application in browser
 
 
+### Dependencies
 
 * Rails version - 'rails', '~> 6.0.3'
 
