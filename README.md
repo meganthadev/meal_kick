@@ -1,4 +1,4 @@
- MealKick! README
+# MealKick! README
 
 Welcome to MealKick! A meal planning app where users can add and share their own recipes for meal planning, as well as comment on other's recipes, in a simple-to-use interface which makes meal planning... a real kick!
 
