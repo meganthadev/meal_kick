@@ -1,4 +1,4 @@
-# MealKick! README
+# MealKick! The README
 
 ## Welcome to MealKick! A recipe sharing app written with Ruby on Rails. MealKick is a vibrant and interactive home for meal planning where users can add and share their own recipes for meal planning, as well as comment on other's recipes, in a simple-to-use interface which makes meal planning... a real kick!
 
