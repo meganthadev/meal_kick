@@ -9,7 +9,7 @@
 - Users can create an account to store private meals/plans.
 
 
-### Installation Instructions:
+### Installation:
 
 1) git clone: git@github.com:meganthadev/meal_kick.git
 2) Run:   bundle install --full-index (installs all gems/dependencies)
