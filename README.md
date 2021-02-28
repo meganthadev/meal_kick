@@ -4,7 +4,7 @@
 
 ### Features
 
-- Users of this app can create, view, or edit meals.
+- Users can create, view, or edit meals.
 - Users can log in with google omniauth
 - Users can create an account to store private meals/plans.
 
